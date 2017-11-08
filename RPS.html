@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+ 	<meta charset="UTF-8">
+	<title>RPS</title>
+</head>
+
+<body>
+	<h3>Lets play Rock Paper Scissors !! </h3>
+	<div id="game">
+		<h3> "Enter alphabet  r or p or s to start the game" </h3>
+	</div>
+
+    <script type= "text/javascript" >
+    	// the options to choose from for the computer 
+		var options = ["r","p","s"];
+		// variables to keep the score 
+		var wins = 0; 
+		var losses = 0;
+		var ties = 0;
+
+			//this function runs whenever user hits a key 
+			document.onkeyup = function(event){
+				//which key the user pressed 
+				var userInput = event.key ; 
+				// random guess for the computer from the option array 
+				var computerOption = options[Math.floor(Math.random()*options.length)];
+
+				if((userInput ==="r") || (userInput ==="s") || (userInput ==="p")){
+					if ((userInput ==="p") && (computerOption ==="r")) {
+						losses++;
+					}
+					else if ((userInput ==="r") && (computerOption ==="p")) {
+						wins++;
+					}
+					else if ((userInput ==="p") && (computerOption ==="s")) {
+						losses++;
+					}
+					else if ((userInput ==="s") && (computerOption ==="p")) {
+						wins++;
+					}
+					else if ((userInput ==="r") && (computerOption ==="s")) {
+						wins++;
+					}
+					else if ((userInput ==="s") && (computerOption ==="r")) {
+						losses++;
+					}
+					else if (userInput === computerOption) {
+						ties++;
+						alert("its a tie")
+					}
+					var html = "<p>Enter alphabet  r or p or s to start the game</p>"+
+					"<h3> You chose: " + userInput + "</h1>" + 
+					"<h3> Computer chose: " + computerOption + "<h1>" +
+					"<p> Wins: " + wins + "</p>" +
+					"<p> Losses: " + losses + "</p>"
+					"<p> Ties : " + ties + "</p>"	
+				document.querySelector("#game").innerHTML = html;
+				}
+			};
+    </script>
+
+</body>
+
+</html>
